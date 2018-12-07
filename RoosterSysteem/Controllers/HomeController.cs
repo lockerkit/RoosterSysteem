@@ -13,9 +13,9 @@ namespace RoosterSysteem.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult EigenGegevens()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Eigen gegevens";
 
             return View();
         }
@@ -23,6 +23,13 @@ namespace RoosterSysteem.Controllers
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
+
+        public ActionResult Overzicht()
+        {
+            ViewBag.Message = "Overzicht";
 
             return View();
         }
