@@ -8,6 +8,10 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
+    Ingelogd als @Session["userName"].ToString()
+    <a href="@Url.Action("LogOut","Login")">Uitloggen</a>
+
+
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
