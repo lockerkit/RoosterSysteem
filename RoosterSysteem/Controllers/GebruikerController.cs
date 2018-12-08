@@ -6,9 +6,9 @@ using System.Web.Mvc;
 
 namespace RoosterSysteem.Controllers
 {
-    public class EigengegevensController : Controller
+    public class GebruikerController : Controller
     {
-        // GET: Eigengegevens
+        // GET: Gebruiker
         public ActionResult Index()
         {
             return View();
