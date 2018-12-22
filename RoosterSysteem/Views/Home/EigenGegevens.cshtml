@@ -1,14 +1,46 @@
 ﻿@{
     ViewBag.Title = "Eigen gegevens";
 }
-<h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
 <html>
 
-<body style="background-color:grey;">
+<body>
+    <style>
+        table {
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #ddd;
+        }
 
+        th, td {
+            text-align: left;
+            padding: 17px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+    </style>
+    <table id="myTable">
+        <tr>
+            <th>Naam</th>
+            <th>Achternaam</th>
+            <th>Mail</th>
+            <th>Faculty</th>
+            <th>Module</th>
+            <th>Beschikbare uren</th>
+        </tr>
+        <tr>
+            <td>Falco</td>
+            <td>Wenteler</td>
+            <td>Falcowenteler@hotmail.com</td>
+            <td>ICT</td>
+            <td>A1A5</td>
+            <td>40</td>
+        </tr>
+    </table>
+    <p><button onclick="sortTable()">Wijzigen</button></p>
 </body>
-
 </html>
 
