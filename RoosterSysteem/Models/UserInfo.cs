@@ -12,19 +12,17 @@ namespace RoosterSysteem.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class UserInfo
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.UserInfoes = new HashSet<UserInfo>();
-        }
-    
+        public int ID { get; set; }
+        public string Name { get; set; }
+        public string LastName { get; set; }
+        public string Mail { get; set; }
+        public string Faculty { get; set; }
+        public string Module { get; set; }
+        public string AvailableHours { get; set; }
         public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserInfo> UserInfoes { get; set; }
+        public virtual User User { get; set; }
     }
 }

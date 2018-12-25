@@ -40,6 +40,7 @@ namespace RoosterSysteem.Controllers
             }
             
         }
+
         //Uitloggen
         public ActionResult LogOut()
         {
