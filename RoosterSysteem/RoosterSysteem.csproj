@@ -162,9 +162,6 @@
     <Compile Include="Models\User.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\UserInfo.cs">
-      <DependentUpon>LoginDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

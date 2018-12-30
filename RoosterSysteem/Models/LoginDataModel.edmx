@@ -13,38 +13,8 @@
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="100" />
         </EntityType>
-        <EntityType Name="UserInfo">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="varchar" MaxLength="50" />
-          <Property Name="LastName" Type="varchar" MaxLength="50" />
-          <Property Name="Mail" Type="varchar" MaxLength="50" />
-          <Property Name="Faculty" Type="varchar" MaxLength="50" />
-          <Property Name="Module" Type="varchar" MaxLength="50" />
-          <Property Name="AvailableHours" Type="varchar" MaxLength="50" />
-          <Property Name="UserID" Type="int" Nullable="false" />
-        </EntityType>
-        <Association Name="FK_UserInfo_User">
-          <End Role="User" Type="Self.User" Multiplicity="1" />
-          <End Role="UserInfo" Type="Self.UserInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="UserInfo">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="ZuydDBModelStoreContainer">
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="UserInfo" EntityType="Self.UserInfo" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_UserInfo_User" Association="Self.FK_UserInfo_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="UserInfo" EntitySet="UserInfo" />
-          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -57,43 +27,10 @@
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="UserInfoes" Relationship="ZuydDBModel.FK_UserInfo_User" FromRole="User" ToRole="UserInfo" />
         </EntityType>
         <EntityContainer Name="ZuydDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="UserInfoes" EntityType="ZuydDBModel.UserInfo" />
-          <AssociationSet Name="FK_UserInfo_User" Association="ZuydDBModel.FK_UserInfo_User">
-            <End Role="User" EntitySet="Users" />
-            <End Role="UserInfo" EntitySet="UserInfoes" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="UserInfo">
-          <Key>
-            <PropertyRef Name="ID" />
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Mail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Faculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Module" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="AvailableHours" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="User" Relationship="ZuydDBModel.FK_UserInfo_User" FromRole="UserInfo" ToRole="User" />
-        </EntityType>
-        <Association Name="FK_UserInfo_User">
-          <End Type="ZuydDBModel.User" Role="User" Multiplicity="1" />
-          <End Type="ZuydDBModel.UserInfo" Role="UserInfo" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="UserInfo">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -106,20 +43,6 @@
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="UserInfoes">
-            <EntityTypeMapping TypeName="ZuydDBModel.UserInfo">
-              <MappingFragment StoreEntitySet="UserInfo">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="AvailableHours" ColumnName="AvailableHours" />
-                <ScalarProperty Name="Module" ColumnName="Module" />
-                <ScalarProperty Name="Faculty" ColumnName="Faculty" />
-                <ScalarProperty Name="Mail" ColumnName="Mail" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
