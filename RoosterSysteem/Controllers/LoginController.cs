@@ -19,6 +19,8 @@ namespace RoosterSysteem.Controllers
         [HttpPost]
         public ActionResult Autherize(RoosterSysteem.Models.User userModel)
         {
+            ViewBag.FoutieveInlog = false;
+
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
                 var userDetails = db.Users.Where(x => x.UserName == userModel.UserName && x.Password == userModel.Password).FirstOrDefault();
@@ -26,7 +28,8 @@ namespace RoosterSysteem.Controllers
                 //inloggegevens zijn onjuist > geef LoginErrorMessage
                 if (userDetails==null)
                 {
-                    userModel.LoginErrorMessage = "Deze inloggegevens kloppen niet.";
+                    ViewBag.FoutieveInlog = true;
+
                     return View("Index", userModel);
                 }
 

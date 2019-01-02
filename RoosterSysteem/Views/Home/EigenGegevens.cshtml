@@ -1,4 +1,5 @@
-﻿@{
+﻿@model RoosterSysteem.Models.UserInfo
+@{
     ViewBag.Title = "Eigen gegevens";
 }
 <h3>@ViewBag.Message</h3>
@@ -6,6 +7,7 @@
 <html>
 
 <body>
+
     <style>
         table {
             border-spacing: 0;
@@ -22,25 +24,28 @@
             background-color: #f2f2f2
         }
     </style>
-    <table id="myTable">
-        <tr>
-            <th>Naam</th>
-            <th>Achternaam</th>
-            <th>Mail</th>
-            <th>Faculty</th>
-            <th>Module</th>
-            <th>Beschikbare uren</th>
-        </tr>
-        <tr>
-            <td>Falco</td>
-            <td>Wenteler</td>
-            <td>Falcowenteler@hotmail.com</td>
-            <td>ICT</td>
-            <td>A1A5</td>
-            <td>40</td>
-        </tr>
-    </table>
-    <p><button onclick="sortTable()">Wijzigen</button></p>
-</body>
+    @using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post))
+    {
+        <table id="myTable">
+            <tr>
+                <th>@Html.LabelFor(m => m.FirstName)</th>
+                <th>@Html.LabelFor(m => m.LastName)</th>
+                <th>@Html.LabelFor(m => m.MailAddress)</th>
+                <th>@Html.LabelFor(m => m.Faculty)</th>
+                <th>@Html.LabelFor(m => m.Module)</th>
+                <th>@Html.LabelFor(m => m.AvailableHours)</th>
+            </tr>
+            <tr>
+                <td>@Model.FirstName</td>
+                <td>@Model.LastName</td>
+                <td>@Model.MailAddress</td>
+                <td>@Model.Faculty</td>
+                <td>@Model.Module</td>
+                <td>@Model.AvailableHours</td>
+            </tr>
+        </table>
+        <p><button onclick="Edit()">Wijzigen</button></p>
+    }
+    </body>
 </html>
 

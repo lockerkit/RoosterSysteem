@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RoosterSysteem.Models;
 
 namespace RoosterSysteem.Controllers
 {
@@ -15,9 +16,29 @@ namespace RoosterSysteem.Controllers
 
         public ActionResult EigenGegevens()
         {
-            ViewBag.Message = "Eigen gegevens";
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
-            return View();
+            using (ZuydDBEntities db = new ZuydDBEntities())
+            {
+                ViewBag.Message = "Eigen gegevens";
+
+                // database in
+
+                var userId = (int) Session["userID"];
+                var results = db.UserInfoes.Where(ui => ui.UserUserID == userId).First();
+
+                // in t model
+
+                var model = results;
+             
+
+                // -> geef t door aan de view
+
+                return View(model);
+            }
         }
 
         public ActionResult Contact()

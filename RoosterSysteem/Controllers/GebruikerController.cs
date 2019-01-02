@@ -9,9 +9,10 @@ namespace RoosterSysteem.Controllers
     public class GebruikerController : Controller
     {
         // GET: Gebruiker
-        public ActionResult Index()
+        public ActionResult Edit()
         {
-            return View();
+            
+            return Edit();
         }
     }
 }
