@@ -29,6 +29,7 @@ namespace RoosterSysteem.Controllers
 
                 var userId = (int) Session["userID"];
                 var results = db.UserInfoes.Where(ui => ui.UserUserID == userId).First();
+                
 
                 // in t model
 
