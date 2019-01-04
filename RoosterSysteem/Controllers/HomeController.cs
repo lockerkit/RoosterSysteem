@@ -25,19 +25,9 @@ namespace RoosterSysteem.Controllers
             {
                 ViewBag.Message = "Eigen gegevens";
 
-                // database in
-
                 var userId = (int) Session["userID"];
                 var results = db.UserInfoes.Where(ui => ui.UserUserID == userId).First();
-                
-
-                // in t model
-
-                var model = results;
-             
-
-                // -> geef t door aan de view
-
+                var model = results;           
                 return View(model);
             }
         }
