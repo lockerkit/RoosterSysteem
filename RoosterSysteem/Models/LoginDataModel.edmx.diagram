@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="331f95031479401b87663bd8ea276c3a" Name="Diagram1">
-        <EntityTypeShape EntityType="ZuydDBModel.User" Width="1.5" PointX="1.25" PointY="2.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZuydDBModel.UserInfo" Width="1.5" PointX="4.5" PointY="1.875" />
+        <EntityTypeShape EntityType="ZuydDBModel.User" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZuydDBModel.UserInfo" Width="1.5" PointX="8.25" PointY="1.5" />
         <AssociationConnector Association="ZuydDBModel.UserUserInfo" />
       </Diagram>
     </edmx:Diagrams>

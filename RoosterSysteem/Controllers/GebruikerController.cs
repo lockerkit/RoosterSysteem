@@ -8,11 +8,5 @@ namespace RoosterSysteem.Controllers
 {
     public class GebruikerController : Controller
     {
-        // GET: Gebruiker
-        public ActionResult Edit()
-        {
-            
-            return Edit();
-        }
     }
 }

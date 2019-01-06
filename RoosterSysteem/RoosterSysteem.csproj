@@ -137,6 +137,7 @@
     <Compile Include="Controllers\GebruikerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\UserInfoesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -223,6 +224,12 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Overzicht.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Home\EigenGegevensWijzigen.cshtml" />
+    <Content Include="Views\UserInfoes\Create.cshtml" />
+    <Content Include="Views\UserInfoes\Delete.cshtml" />
+    <Content Include="Views\UserInfoes\Details.cshtml" />
+    <Content Include="Views\UserInfoes\Edit.cshtml" />
+    <Content Include="Views\UserInfoes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

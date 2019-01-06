@@ -32,6 +32,25 @@ namespace RoosterSysteem.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult EigenGegevensWijzigen()
+        {
+                return View(EigenGegevens);
+        }
+      
+
+        [HttpPost]
+        public ActionResult Wijzigen(UserInfo UserInfo)
+        {
+            using (ZuydDBEntities db = new ZuydDBEntities())
+            {
+                var result = db.UserInfoes.First();
+                db.SaveChanges();            
+            }
+
+            return RedirectToAction("EigenGegevens", "Home");
+        }
+
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";

@@ -1,0 +1,58 @@
+﻿@model RoosterSysteem.Models.UserInfo
+@{
+    ViewBag.Title = "Mijn gegevens";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+</head>
+<body>
+
+    <div>
+        <form>
+            <!-- input EDIT fields -->
+            Voornaam:<br>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.FirstName)
+            </div>
+            <br/>
+
+            Achternaam:<br>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.LastName)
+            </div>
+            <br/>
+
+            e-mail-adres:<br>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MailAddress)
+            </div>
+            <br/>
+
+            Faculteit:<br>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Faculty)
+            </div>
+            <br/>
+
+            Module:<br>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Module)
+            </div>
+            <br/>
+
+            Beschikbare Uren:<br>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AvailableHours)
+            </div>
+            <br/>
+
+            <!-- save changes button -->
+            <input type="button" value="Save" onclick="location.href='@Url.Action("Wijzigen", "Home")'" />
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,6 +1,6 @@
 ﻿@model RoosterSysteem.Models.UserInfo
 @{
-    ViewBag.Title = "Eigen gegevens";
+    ViewBag.Title = "Mijn gegevens";
 }
 <h3>@ViewBag.Message</h3>
 
@@ -24,28 +24,27 @@
             background-color: #f2f2f2
         }
     </style>
-    @using (Html.BeginForm("Edit", "Gebruiker", FormMethod.Post))
-    {
-        <table id="myTable">
-            <tr>
-                <th>@Html.LabelFor(m => m.FirstName)</th>
-                <th>@Html.LabelFor(m => m.LastName)</th>
-                <th>@Html.LabelFor(m => m.MailAddress)</th>
-                <th>@Html.LabelFor(m => m.Faculty)</th>
-                <th>@Html.LabelFor(m => m.Module)</th>
-                <th>@Html.LabelFor(m => m.AvailableHours)</th>
-            </tr>
-            <tr>
-                <td>@Model.FirstName</td>
-                <td>@Model.LastName</td>
-                <td>@Model.MailAddress</td>
-                <td>@Model.Faculty</td>
-                <td>@Model.Module</td>
-                <td>@Model.AvailableHours</td>
-            </tr>
-        </table>
-        <p><button onclick="Edit()">Wijzigen</button></p>
-    }
+            <table id="myTable">
+                <tr>
+                    <th>@Html.LabelFor(m => m.FirstName)</th>
+                    <th>@Html.LabelFor(m => m.LastName)</th>
+                    <th>@Html.LabelFor(m => m.MailAddress)</th>
+                    <th>@Html.LabelFor(m => m.Faculty)</th>
+                    <th>@Html.LabelFor(m => m.Module)</th>
+                    <th>@Html.LabelFor(m => m.AvailableHours)</th>
+                </tr>
+                <tr>
+                    <td>@Model.FirstName</td>
+                    <td>@Model.LastName</td>
+                    <td>@Model.MailAddress</td>
+                    <td>@Model.Faculty</td>
+                    <td>@Model.Module</td>
+                    <td>@Model.AvailableHours</td>
+                </tr>
+
+            </table>
+            <input type="submit" onclick="location.href='@Url.Action("EigenGegevensWijzigen", "home")'" value="Wijzigen" />
     </body>
-</html>
+
+    </html>
 
