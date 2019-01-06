@@ -14,6 +14,7 @@ namespace RoosterSysteem.Controllers
             return View();
         }
 
+       
         public ActionResult EigenGegevens()
         {
             if (Session["userID"] == null)
@@ -27,29 +28,46 @@ namespace RoosterSysteem.Controllers
 
                 var userId = (int) Session["userID"];
                 var results = db.UserInfoes.Where(ui => ui.UserUserID == userId).First();
-                var model = results;           
+                var model = results;
                 return View(model);
             }
         }
-
-        [HttpGet]
-        public ActionResult EigenGegevensWijzigen()
-        {
-                return View(EigenGegevens);
-        }
-      
-
-        [HttpPost]
-        public ActionResult Wijzigen(UserInfo UserInfo)
-        {
+        public ActionResult Wijzigen()
+            {
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
-                var result = db.UserInfoes.First();
-                db.SaveChanges();            
-            }
 
+                db.SaveChanges();
+            }
             return RedirectToAction("EigenGegevens", "Home");
         }
+
+        public ActionResult EigenGegevensWijzigen()
+        {
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public ActionResult Contact()
         {
