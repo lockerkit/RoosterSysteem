@@ -142,8 +142,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Classroom.cs" />
-    <Compile Include="Models\Course.cs" />
-    <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\Education.cs" />
     <Compile Include="Models\LoginDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -222,7 +221,7 @@
     <Content Include="Views\Home\EigenGegevens.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Overzicht.cshtml" />
+    <Content Include="Views\Home\Education.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Home\EigenGegevensWijzigen.cshtml" />
     <Content Include="Views\UserInfoes\Create.cshtml" />
@@ -230,6 +229,8 @@
     <Content Include="Views\UserInfoes\Details.cshtml" />
     <Content Include="Views\UserInfoes\Edit.cshtml" />
     <Content Include="Views\UserInfoes\Index.cshtml" />
+    <Content Include="Views\Home\Teacher.cshtml" />
+    <Content Include="Views\Home\Classroom.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,44 @@
+﻿@model RoosterSysteem.Models.Classroom
+
+@{
+    ViewBag.Title = "Lokalen";
+}
+
+<h3>@ViewBag.Message</h3>
+
+<html>
+<body>
+    <style>
+        table {
+            border-spacing: 0;
+            elf width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 17px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+    </style>
+
+    <table id="Classroom">
+        <tr>
+            <th>@Html.LabelFor(m => m.classroomNumber)</th>
+            <th>@Html.LabelFor(m => m.capacityClassroom)</th>
+            <th>@Html.LabelFor(m => m.typeClassroom)</th>
+            <th>@Html.LabelFor(m => m.linkedFaculty)</th>
+        </tr>
+
+        <tr>
+            <td>@Model.classroomNumber</td>
+            <td>@Model.capacityClassroom</td>
+            <td>@Model.typeClassroom</td>
+            <td>@Model.linkedFaculty</td>
+        </tr>
+    </table>
+</body>
+</html>

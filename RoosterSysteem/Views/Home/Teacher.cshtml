@@ -1,0 +1,54 @@
+﻿@model RoosterSysteem.Models.Teacher
+
+@{
+    ViewBag.Title = "Docenten";
+}
+
+<h3>@ViewBag.Message</h3>
+
+<html>
+<body>
+    <style>
+        table {
+            border-spacing: 0;
+            elf width: 100%;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 17px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2
+        }
+    </style>
+
+    <table id="Teacher">
+        <tr>
+            <th>@Html.LabelFor(m => m.firstName)</th>
+            <th>@Html.LabelFor(m => m.lastName)</th>
+            <th>@Html.LabelFor(m => m.linkedFaculty)</th>
+            <th>@Html.LabelFor(m => m.availableHours)</th>
+            <th>@Html.LabelFor(m => m.availableDays)</th>
+            <th>@Html.LabelFor(m => m.availableWeeklyHours)</th>
+            <th>@Html.LabelFor(m => m.qualifiedCourse)</th>
+            <th>@Html.LabelFor(m => m.email)</th>
+            <th>@Html.LabelFor(m => m.note)</th>
+        </tr>
+
+        <tr>
+            <td>@Model.firstName</td>
+            <td>@Model.lastName</td>
+            <td>@Model.linkedFaculty</td>
+            <td>@Model.availableHours</td>
+            <td>@Model.availableDays</td>
+            <td>@Model.availableWeeklyHours</td>
+            <td>@Model.qualifiedCourse</td>
+            <td>@Model.email</td>
+            <td>@Model.note</td>
+        </tr>
+    </table>
+</body>
+</html>

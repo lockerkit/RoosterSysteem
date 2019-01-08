@@ -46,29 +46,6 @@ namespace RoosterSysteem.Controllers
         {
             return View();
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
@@ -76,9 +53,33 @@ namespace RoosterSysteem.Controllers
             return View();
         }
 
-        public ActionResult Overzicht()
+        public ActionResult Classroom()
         {
-            ViewBag.Message = "Overzicht";
+            ViewBag.Message = "Classroom";
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
+        public ActionResult Education()
+        {
+            ViewBag.Message = "Education";
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
+
+            return View();
+        }
+        public ActionResult Teacher()
+        {
+            ViewBag.Message = "Teacher";
+            if (Session["userID"] == null)
+            {
+                return RedirectToAction("Index", "Login");
+            }
 
             return View();
         }
