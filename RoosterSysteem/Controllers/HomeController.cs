@@ -53,35 +53,37 @@ namespace RoosterSysteem.Controllers
             return View();
         }
 
-        public ActionResult Classroom()
+        public ActionResult Overzicht()
         {
-            ViewBag.Message = "Classroom";
-            if (Session["userID"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
-
             return View();
         }
-        public ActionResult Education()
-        {
-            ViewBag.Message = "Education";
-            if (Session["userID"] == null)
-            {
-                return RedirectToAction("Index", "Login");
-            }
 
-            return View();
+        public ActionResult Classroom()
+        {
+            using (ZuydDBEntities db = new ZuydDBEntities())
+            {
+                var results = db.Classrooms.First();
+                var model = results;
+                return View(model);
+            }
         }
         public ActionResult Teacher()
         {
-            ViewBag.Message = "Teacher";
-            if (Session["userID"] == null)
+            using (ZuydDBEntities db = new ZuydDBEntities())
             {
-                return RedirectToAction("Index", "Login");
+                var results = db.Teachers.First();
+                var model = results;
+                return View(model);
             }
-
-            return View();
+        }
+        public ActionResult Education()
+        {
+            using (ZuydDBEntities db = new ZuydDBEntities())
+            {
+                var results = db.Educations.First();
+                var model = results;
+                return View(model);
+            }
         }
     }
 }

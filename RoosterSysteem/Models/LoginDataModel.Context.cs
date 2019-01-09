@@ -27,5 +27,8 @@ namespace RoosterSysteem.Models
     
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<UserInfo> UserInfoes { get; set; }
+        public virtual DbSet<Classroom> Classrooms { get; set; }
+        public virtual DbSet<Education> Educations { get; set; }
+        public virtual DbSet<Teacher> Teachers { get; set; }
     }
 }

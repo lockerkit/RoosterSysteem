@@ -4,49 +4,87 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ZuydDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityContainer Name="ZuydDBModelStoreContainer">
-    <EntitySet Name="Users" EntityType="ZuydDBModel.Store.Users" store:Type="Tables" Schema="dbo" />
-    <EntitySet Name="UserInfoes" EntityType="ZuydDBModel.Store.UserInfoes" store:Type="Tables" Schema="dbo" />
-    <AssociationSet Name="UserUserInfo" Association="ZuydDBModel.Store.UserUserInfo">
-      <End Role="User" EntitySet="Users" />
-      <End Role="UserInfo" EntitySet="UserInfoes" />
-    </AssociationSet>
-  </EntityContainer>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="UserID" />
-    </Key>
-    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="UserName" Type="varchar" Nullable="true" MaxLength="50" />
-    <Property Name="Password" Type="varchar" Nullable="true" MaxLength="100" />
-  </EntityType>
-  <EntityType Name="UserInfoes">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FirstName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="LastName" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="MailAddress" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Faculty" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="Module" Type="nvarchar" Nullable="true" MaxLength="50" />
-    <Property Name="AvailableHours" Type="int" Nullable="true" />
-    <Property Name="UserUserID" Type="int" Nullable="false" />
-  </EntityType>
-  <Association Name="UserUserInfo">
-    <End Role="User" Type="ZuydDBModel.Store.Users" Multiplicity="1" />
-    <End Role="UserInfo" Type="ZuydDBModel.Store.UserInfoes" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="User">
-        <PropertyRef Name="UserID" />
-      </Principal>
-      <Dependent Role="UserInfo">
-        <PropertyRef Name="UserUserID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-</Schema></edmx:StorageModels>
+    <Schema Namespace="ZuydDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Classroom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="classroomNumber" Type="varchar" MaxLength="50" />
+          <Property Name="capacityClassroom" Type="int" />
+          <Property Name="typeClassroom" Type="varchar" MaxLength="50" />
+          <Property Name="linkedFaculty" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="educationName" Type="varchar" MaxLength="45" />
+          <Property Name="linkedFaculty" Type="varchar" MaxLength="45" />
+          <Property Name="courses" Type="varchar" MaxLength="45" />
+          <Property Name="typeEducation" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="45" />
+          <Property Name="lastName" Type="varchar" MaxLength="45" />
+          <Property Name="linkedFaculty" Type="varchar" MaxLength="45" />
+          <Property Name="availableHours" Type="float" />
+          <Property Name="availableDays" Type="varchar" MaxLength="45" />
+          <Property Name="availableWeeklyHours" Type="float" />
+          <Property Name="qualifiedCourse" Type="varchar" MaxLength="45" />
+          <Property Name="email" Type="varchar" MaxLength="45" />
+          <Property Name="note" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="UserInfoes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="MailAddress" Type="nvarchar" MaxLength="50" />
+          <Property Name="Faculty" Type="nvarchar" MaxLength="50" />
+          <Property Name="Module" Type="nvarchar" MaxLength="50" />
+          <Property Name="AvailableHours" Type="int" />
+          <Property Name="UserUserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <Association Name="FK_UserUserInfo">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="UserInfoes" Type="Self.UserInfoes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInfoes">
+              <PropertyRef Name="UserUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ZuydDBModelStoreContainer">
+          <EntitySet Name="Classroom" EntityType="Self.Classroom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Education" EntityType="Self.Education" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInfoes" EntityType="Self.UserInfoes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_UserUserInfo" Association="Self.FK_UserUserInfo">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UserInfoes" EntitySet="UserInfoes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ZuydDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -66,6 +104,9 @@
             <End Role="User" EntitySet="Users" />
             <End Role="UserInfo" EntitySet="UserInfoes" />
           </AssociationSet>
+          <EntitySet Name="Classrooms" EntityType="ZuydDBModel.Classroom" />
+          <EntitySet Name="Educations" EntityType="ZuydDBModel.Education" />
+          <EntitySet Name="Teachers" EntityType="ZuydDBModel.Teacher" />
         </EntityContainer>
         <EntityType Name="UserInfo">
           <Key>
@@ -93,6 +134,41 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Classroom">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="classroomNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="capacityClassroom" Type="Int32" />
+          <Property Name="typeClassroom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="linkedFaculty" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Education">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="educationName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="linkedFaculty" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="courses" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="typeEducation" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Teacher">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="linkedFaculty" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="availableHours" Type="Double" />
+          <Property Name="availableDays" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="availableWeeklyHours" Type="Double" />
+          <Property Name="qualifiedCourse" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="note" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -122,6 +198,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="Classrooms">
+            <EntityTypeMapping TypeName="ZuydDBModel.Classroom">
+              <MappingFragment StoreEntitySet="Classroom">
+                <ScalarProperty Name="linkedFaculty" ColumnName="linkedFaculty" />
+                <ScalarProperty Name="typeClassroom" ColumnName="typeClassroom" />
+                <ScalarProperty Name="capacityClassroom" ColumnName="capacityClassroom" />
+                <ScalarProperty Name="classroomNumber" ColumnName="classroomNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Educations">
+            <EntityTypeMapping TypeName="ZuydDBModel.Education">
+              <MappingFragment StoreEntitySet="Education">
+                <ScalarProperty Name="typeEducation" ColumnName="typeEducation" />
+                <ScalarProperty Name="courses" ColumnName="courses" />
+                <ScalarProperty Name="linkedFaculty" ColumnName="linkedFaculty" />
+                <ScalarProperty Name="educationName" ColumnName="educationName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teachers">
+            <EntityTypeMapping TypeName="ZuydDBModel.Teacher">
+              <MappingFragment StoreEntitySet="Teacher">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="qualifiedCourse" ColumnName="qualifiedCourse" />
+                <ScalarProperty Name="availableWeeklyHours" ColumnName="availableWeeklyHours" />
+                <ScalarProperty Name="availableDays" ColumnName="availableDays" />
+                <ScalarProperty Name="availableHours" ColumnName="availableHours" />
+                <ScalarProperty Name="linkedFaculty" ColumnName="linkedFaculty" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

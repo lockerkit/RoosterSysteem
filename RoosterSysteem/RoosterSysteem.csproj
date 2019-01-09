@@ -141,8 +141,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Classroom.cs" />
-    <Compile Include="Models\Education.cs" />
+    <Compile Include="Models\Classroom.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Education.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\LoginDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,7 +162,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>LoginDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\Teacher.cs" />
+    <Compile Include="Models\Teacher.cs">
+      <DependentUpon>LoginDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\User.cs">
       <DependentUpon>LoginDataModel.tt</DependentUpon>
     </Compile>
@@ -231,6 +237,7 @@
     <Content Include="Views\UserInfoes\Index.cshtml" />
     <Content Include="Views\Home\Teacher.cshtml" />
     <Content Include="Views\Home\Classroom.cshtml" />
+    <Content Include="Views\Home\Overzicht.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
