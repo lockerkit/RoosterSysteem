@@ -30,6 +30,8 @@ namespace RoosterSysteem.Controllers
                 {
                     ViewBag.FoutieveInlog = true;
 
+                    userModel.ErrorMessage = "ERROR: Foutieve inloggegevens";
+
                     return View("Index", userModel);
                 }
 
