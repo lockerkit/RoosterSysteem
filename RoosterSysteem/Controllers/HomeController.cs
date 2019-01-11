@@ -57,16 +57,30 @@ namespace RoosterSysteem.Controllers
         {
             return View();
         }
+        
+      public ActionResult Classroom()
+      {
+          using (ZuydDBEntities db = new ZuydDBEntities())
+          {
+                var results = (from classroom in db.Classrooms select classroom).ToList();
 
+                return View(results);
+
+            }
+      }
+       
+        /*
         public ActionResult Classroom()
         {
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
-                var results = db.Classrooms.First();
+                var results = db.Classrooms.SingleOrDefault();
                 var model = results;
                 return View(model);
             }
         }
+       
+         */
         public ActionResult Teacher()
         {
             using (ZuydDBEntities db = new ZuydDBEntities())
