@@ -9,7 +9,6 @@ namespace RoosterSysteem.Controllers
 {
     public class LoginController : Controller
     {
-        // GET: Login
         public ActionResult Index()
         {
             return View();
@@ -25,13 +24,9 @@ namespace RoosterSysteem.Controllers
             {
                 var userDetails = db.Users.Where(x => x.UserName == userModel.UserName && x.Password == userModel.Password).FirstOrDefault();
 
-                //inloggegevens zijn onjuist > geef LoginErrorMessage
+                //inloggegevens zijn onjuist > geef login pagina
                 if (userDetails==null)
                 {
-                    ViewBag.FoutieveInlog = true;
-
-                    userModel.ErrorMessage = "ERROR: Foutieve inloggegevens";
-
                     return View("Index", userModel);
                 }
 
@@ -46,7 +41,7 @@ namespace RoosterSysteem.Controllers
             
         }
 
-        //Uitloggen
+        //Uitloggen > Sessie afbreken
         public ActionResult LogOut()
         {
             int userID = (int)Session["userID"];

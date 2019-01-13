@@ -14,77 +14,45 @@ namespace RoosterSysteem.Controllers
             return View();
         }
 
-       
+        //Use-case "inzien en wijzigen eigengegevens "(Falco)
         public ActionResult EigenGegevens()
-        {
+        {   //Geen usersession = redirect naar log-inscherm
             if (Session["userID"] == null)
             {
                 return RedirectToAction("Index", "Login");
             }
-
+            
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
-                ViewBag.Message = "Eigen gegevens";
-
+                //ID ophalen van ingelogde gebruiker
                 var userId = (int) Session["userID"];
+
+                //ID gebruiker vergelijken met opgeslagen userinfo en ophalen.
                 var results = db.UserInfoes.Where(ui => ui.UserUserID == userId).First();
                 var model = results;
+
                 return View(model);
             }
         }
-        public ActionResult Wijzigen()
-            {
-            using (ZuydDBEntities db = new ZuydDBEntities())
-            {
-
-                db.SaveChanges();
-            }
-            return RedirectToAction("EigenGegevens", "Home");
-        }
-
-        public ActionResult EigenGegevensWijzigen()
-        {
-            return View();
-        }
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
-        public ActionResult Overzicht()
-        {
-            return View();
-        }
-        
-      public ActionResult Classroom()
-      {
-          using (ZuydDBEntities db = new ZuydDBEntities())
-          {
-                var results = (from classroom in db.Classrooms select classroom).ToList();
-
-                return View(results);
-
-            }
-      }
-       
-        /*
+      
+        //Use-case "Overzichten weergeven"(Stan)
         public ActionResult Classroom()
-        {
+        {   
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
-                var results = db.Classrooms.SingleOrDefault();
+                //Data ophalen van database uit entiteit Classroom en doorsturen.
+                var results = db.Classrooms.First();
                 var model = results;
                 return View(model);
+
             }
         }
        
-         */
         public ActionResult Teacher()
         {
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
+                //Data ophalen van database uit entiteit Teachers en doorsturen.
                 var results = db.Teachers.First();
                 var model = results;
                 return View(model);
@@ -94,10 +62,21 @@ namespace RoosterSysteem.Controllers
         {
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
+                //Data ophalen van database uit entiteit Educations en doorsturen.
                 var results = db.Educations.First();
                 var model = results;
                 return View(model);
             }
+        }
+        public ActionResult EigenGegevensWijzigen()
+        {
+            return View();
+        }
+
+
+        public ActionResult Overzicht()
+        {
+            return View();
         }
     }
 }

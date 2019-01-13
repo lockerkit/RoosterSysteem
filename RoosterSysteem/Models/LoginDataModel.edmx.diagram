@@ -4,13 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="331f95031479401b87663bd8ea276c3a" Name="Diagram1">
-        <EntityTypeShape EntityType="ZuydDBModel.User" Width="1.5" PointX="5.25" PointY="2" IsExpanded="true" />
-        <EntityTypeShape EntityType="ZuydDBModel.UserInfo" Width="1.5" PointX="8.25" PointY="1.5" />
+      <Diagram DiagramId="331f95031479401b87663bd8ea276c3a" Name="Diagram1" ZoomLevel="127">
+        <EntityTypeShape EntityType="ZuydDBModel.User" PointX="3.375" PointY="3.75" Width="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZuydDBModel.UserInfo" PointX="5.625" PointY="4.25" Width="1.5" />
         <AssociationConnector Association="ZuydDBModel.UserUserInfo" />
-        <EntityTypeShape EntityType="ZuydDBModel.Classroom" Width="1.625" PointX="11" PointY="5" />
-        <EntityTypeShape EntityType="ZuydDBModel.Education" Width="1.5" PointX="11.125" PointY="2" />
-        <EntityTypeShape EntityType="ZuydDBModel.Teacher" Width="1.875" PointX="8" PointY="4.875" />
+        <EntityTypeShape EntityType="ZuydDBModel.Classroom" PointX="3.375" PointY="0.75" Width="1.625" />
+        <EntityTypeShape EntityType="ZuydDBModel.Education" PointX="0.75" PointY="0.75" Width="1.5" />
+        <EntityTypeShape EntityType="ZuydDBModel.Teacher" PointX="0.75" PointY="3.75" Width="1.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
