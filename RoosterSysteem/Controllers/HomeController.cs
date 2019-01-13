@@ -21,7 +21,6 @@ namespace RoosterSysteem.Controllers
             {
                 return RedirectToAction("Index", "Login");
             }
-            
             using (ZuydDBEntities db = new ZuydDBEntities())
             {
                 //ID ophalen van ingelogde gebruiker
@@ -30,7 +29,6 @@ namespace RoosterSysteem.Controllers
                 //ID gebruiker vergelijken met opgeslagen userinfo en ophalen.
                 var results = db.UserInfoes.Where(ui => ui.UserUserID == userId).First();
                 var model = results;
-
                 return View(model);
             }
         }
