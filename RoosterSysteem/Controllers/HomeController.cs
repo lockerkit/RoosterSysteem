@@ -44,7 +44,6 @@ namespace RoosterSysteem.Controllers
                 var results = db.Classrooms.First();
                 var model = results;
                 return View(model);
-
             }
         }
        
